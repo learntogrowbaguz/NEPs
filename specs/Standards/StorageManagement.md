@@ -12,7 +12,7 @@ NEAR uses [storage staking] which means that a contract account must have suffic
 4. Withdraw some storage deposit by removing associated account data from the contract and then making a call to remove unused deposit.
 5. Unregister an account to recover full storage balance.
 
-  [storage staking]: https://docs.near.org/docs/concepts/storage-staking
+  [storage staking]: https://docs.near.org/concepts/storage/storage-staking
 
 Prior art:
 
@@ -67,7 +67,7 @@ Let's follow two users, Alice with account `alice` and Bob with account `bob`, a
 
 **Technical calls**
 
-1. Alice queries a view-only method to determine if she already has storage on this contract with `ft::storage_balance_of({"account_id": "alice"})`. Using [NEAR CLI](https://docs.near.org/docs/tools/near-cli) to make this view call, the command would be:
+1. Alice queries a view-only method to determine if she already has storage on this contract with `ft::storage_balance_of({"account_id": "alice"})`. Using [NEAR CLI](https://docs.near.org/tools/near-cli) to make this view call, the command would be:
 
        near view ft storage_balance_of '{"account_id": "alice"}'
 
@@ -176,7 +176,7 @@ Bob wants to close his account, but has a non-zero balance of `ft` tokens.
 
 ### Example 2: Social Media Contract
 
-Imagine a social media smart contract which passes storage costs onto users for posts and follower data. Let's say this this contract is deployed at account `social`. Like the Fungible Token contract example above, the `storage_balance_bounds.min` is 0.00235, because this contract will likewise add a newly-registered user to an internal Map. However, this contract sets no `storage_balance_bounds.max`, since users can add more data to the contract over time and must cover the cost for this storage.
+Imagine a social media smart contract which passes storage costs onto users for posts and follower data. Let's say this contract is deployed at account `social`. Like the Fungible Token contract example above, the `storage_balance_bounds.min` is 0.00235, because this contract will likewise add a newly-registered user to an internal Map. However, this contract sets no `storage_balance_bounds.max`, since users can add more data to the contract over time and must cover the cost for this storage.
 
 So for this contract, `storage_balance_bounds` will return:
 
